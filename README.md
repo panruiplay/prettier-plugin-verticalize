@@ -98,7 +98,7 @@ module.exports = {
 ```javascript
 // 当 `minGroupSize` 设置为 3 时，少于 3 行，不对齐
 const name = 'rio'
-const age  = 18
+const age = 18
 
 // 当 `minGroupSize` 设置为 3 时，大于等于 3 行，对齐
 const foo       = 1
