@@ -76,18 +76,18 @@ module.exports = {
 
 ## 配置选项
 
-| 选项                                     | 类型        | 默认值    | 说明                    |
-|----------------------------------------|-----------|--------|-----------------------|
-| `minGroupSize`                         | `number`  | `2`    | 最少几条语句视为一组进行对齐        |
-| `maxWidthDiff`                         | `number`  | `20`   | 组内语句之间最大宽度差异          |
-| `alignTrailingComments`                | `boolean` | `true` | 是否启用行尾注释对齐            |
+| 选项                                   | 类型      | 默认值 | 说明                          |
+| -------------------------------------- | --------- | ------ | ----------------------------- |
+| `minGroupSize`                         | `number`  | `2`    | 最少几条语句视为一组进行对齐  |
+| `maxWidthDiff`                         | `number`  | `20`   | 组内语句之间最大宽度差异      |
+| `alignTrailingComments`                | `boolean` | `true` | 是否启用行尾注释对齐          |
 | `alignEnums`                           | `boolean` | `true` | 是否启用枚举对齐              |
-| `alignVariableDeclaration`             | `boolean` | `true` | 是否启用变量声明对齐            |
-| `alignAssignment`                      | `boolean` | `true` | 是否启用赋值语句对齐            |
+| `alignVariableDeclaration`             | `boolean` | `true` | 是否启用变量声明对齐          |
+| `alignAssignment`                      | `boolean` | `true` | 是否启用赋值语句对齐          |
 | `alignTrailingCommentsMinGroupSize`    | `number`  | -      | 单独设置行尾注释 minGroupSize |
 | `alignTrailingCommentsMaxWidthDiff`    | `number`  | -      | 单独设置行尾注释 maxWidthDiff |
-| `alignEnumsMinGroupSize`               | `number`  | -      | 单独设置枚举 minGroupSize   |
-| `alignEnumsMaxWidthDiff`               | `number`  | -      | 单独设置枚举 maxWidthDiff   |
+| `alignEnumsMinGroupSize`               | `number`  | -      | 单独设置枚举 minGroupSize     |
+| `alignEnumsMaxWidthDiff`               | `number`  | -      | 单独设置枚举 maxWidthDiff     |
 | `alignVariableDeclarationMinGroupSize` | `number`  | -      | 单独设置变量声明 minGroupSize |
 | `alignVariableDeclarationMaxWidthDiff` | `number`  | -      | 单独设置变量声明 maxWidthDiff |
 | `alignAssignmentMinGroupSize`          | `number`  | -      | 单独设置赋值语句 minGroupSize |
@@ -98,11 +98,11 @@ module.exports = {
 ```javascript
 // 当 `minGroupSize` 设置为 3 时，少于 3 行，不对齐
 const name = 'rio'
-const age = 18
+const age  = 18
 
 // 当 `minGroupSize` 设置为 3 时，大于等于 3 行，对齐
-const foo = 1
-const barz = 2
+const foo       = 1
+const barz      = 2
 const component = 3
 ```
 
@@ -110,13 +110,13 @@ const component = 3
 
 ```javascript
 // 当 `maxWidthDiff` 设置为 20 时
-const name = 1      // name
-const array = [1, 2] // list
+const name        = 1      // name
+const array       = [1, 2] // list
 const array123456 = 3      // name
 const array654321 = [3, 4] // list
 
 // 当 `maxWidthDiff` 设置为 5 时
-const name = 1      // name
+const name  = 1      // name
 const array = [1, 2] // list
 const array123456 = 3      // name
 const array654321 = [3, 4] // list
