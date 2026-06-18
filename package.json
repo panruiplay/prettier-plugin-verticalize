@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-vertical-align",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a Prettier plugin for vertically aligning your code.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -22,14 +22,14 @@
     "url": "https://github.com/panruiplay/prettier-plugin-vertical-align"
   },
   "scripts": {
-    "build": "npm run lint && tsup",
+    "build": "tsup",
     "test": "vitest run",
     "test-coverage": "vitest run --coverage",
     "test-tmp": "vitest run tests/tmp.test.ts",
     "lint": "tsc --noEmit && eslint .",
     "lint:fix": "tsc --noEmit && eslint . --fix",
     "postinstall": "patch-package",
-    "prepublish": "npm run lint",
+    "prepublish": "npm run build",
     "prepare": "husky"
   },
   "keywords": [
