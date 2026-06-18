@@ -1,0 +1,42 @@
+diff --git a/node_modules/recast/lib/parser.d.ts b/node_modules/recast/lib/parser.d.ts
+index 6f1d6df..6f65246 100644
+--- a/node_modules/recast/lib/parser.d.ts
++++ b/node_modules/recast/lib/parser.d.ts
+@@ -1,2 +1,17 @@
+ import { Options } from "./options";
+-export declare function parse(source: string, options?: Partial<Options>): any;
++import { File, SourceLocation } from '@babel/types'
++
++export interface LineInfo {
++  line: string;
++  indent: number;
++  sliceStart: number;
++  sliceEnd: number;
++}
++
++export declare function parse(source: string, options?: Partial<Options>): Omit<File, 'loc'> & {
++  loc: SourceLocation & {
++    lines: {
++      infos: LineInfo[]
++    }
++  }
++};
+diff --git a/node_modules/recast/main.d.ts b/node_modules/recast/main.d.ts
+index ae89c3b..b3540b6 100644
+--- a/node_modules/recast/main.d.ts
++++ b/node_modules/recast/main.d.ts
+@@ -1,5 +1,5 @@
+ import * as types from "ast-types";
+-import { parse } from "./lib/parser";
++import { parse, LineInfo } from "./lib/parser";
+ import { Options } from "./lib/options";
+ export { 
+ /**
+@@ -7,6 +7,7 @@ export {
+  * arbitrary modification and reprinting.
+  */
+ parse,
++LineInfo,
+ /**
+  * Convenient shorthand for the ast-types package.
+  */
