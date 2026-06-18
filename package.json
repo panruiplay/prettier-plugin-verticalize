@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "a Prettier plugin for vertically aligning your code.",
   "type": "module",
-  "main": "../back/dist/index.cjs",
-  "module": "../back/dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
@@ -14,18 +14,18 @@
     }
   },
   "files": [
-    "../back/dist"
+    "dist"
   ],
   "scripts": {
-    "build": "npm run lint && ../back/node_modules/.bin/tsup",
-    "test": "../back/node_modules/.bin/vitest run",
-    "test-coverage": "../back/node_modules/.bin/vitest run --coverage",
-    "test-tmp": "../back/node_modules/.bin/vitest run tests/tmp.test.ts",
-    "lint": "../back/node_modules/.bin/tsc --noEmit && eslint .",
-    "lint:fix": "../back/node_modules/.bin/tsc --noEmit && eslint . --fix",
-    "postinstall": "../back/node_modules/.bin/patch-package",
+    "build": "npm run lint && tsup",
+    "test": "vitest run",
+    "test-coverage": "vitest run --coverage",
+    "test-tmp": "vitest run tests/tmp.test.ts",
+    "lint": "tsc --noEmit && eslint .",
+    "lint:fix": "tsc --noEmit && eslint . --fix",
+    "postinstall": "patch-package",
     "prepublish": "npm run lint",
-    "prepare": "npm run build"
+    "prepare": "husky"
   },
   "keywords": [
     "prettier",
@@ -49,6 +49,7 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
+    "husky": "^9.1.7",
     "patch-package": "^8.0.1",
     "prettier": "^3.5.3",
     "tsup": "^8.5.0",

@@ -1,7 +1,7 @@
 import * as prettierPluginBabel from 'prettier/plugins/babel'
 import * as prettierPluginEstree from 'prettier/plugins/estree'
 import * as prettierPluginTypescript from 'prettier/plugins/typescript'
-import prettierPluginVerticalAlign from '../back/dist/index.js'
+import prettierPluginVerticalAlign from './dist/index.js'
 
 /** @type {import('prettier').Config} */
 export default {
