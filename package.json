@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-vertical-align",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a Prettier plugin for vertically aligning your code.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -28,9 +28,8 @@
     "test-tmp": "vitest run tests/tmp.test.ts",
     "lint": "tsc --noEmit && eslint .",
     "lint:fix": "tsc --noEmit && eslint . --fix",
-    "postinstall": "patch-package && npm run build",
     "prepublishOnly": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky && patch-package"
   },
   "keywords": [
     "prettier",
