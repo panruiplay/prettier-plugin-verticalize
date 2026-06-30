@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-verticalize",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a Prettier plugin for vertically aligning your code.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -33,7 +33,8 @@
   },
   "keywords": [
     "prettier",
-    "prettier-plugin"
+    "prettier-plugin",
+    "vertical-align"
   ],
   "license": "MIT",
   "peerDependencies": {
