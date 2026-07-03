@@ -26,23 +26,17 @@ npm install -D prettier prettier-plugin-verticalize
 
 ## 启用
 
-在 Prettier 配置文件中注册插件。本插件基于 estree printer，需与 Prettier 自带的 parser 插件一起使用：
+在 Prettier 配置文件中注册插件。
 
 ESM 写法：
 
 ```js
 // prettier.config.js
 import prettierPluginVerticalize from 'prettier-plugin-verticalize'
-import * as prettierPluginBabel from 'prettier/plugins/babel'
-import * as prettierPluginEstree from 'prettier/plugins/estree'
-import * as prettierPluginTypescript from 'prettier/plugins/typescript'
 
 export default {
   plugins: [
-    prettierPluginEstree,
-    prettierPluginTypescript,
-    prettierPluginBabel,
-    prettierPluginVerticalize,
+    prettierPluginVerticalize
   ],
 }
 ```
@@ -53,9 +47,6 @@ CommonJS 写法：
 // prettier.config.cjs
 module.exports = {
   plugins: [
-    require('prettier/plugins/estree'),
-    require('prettier/plugins/typescript'),
-    require('prettier/plugins/babel'),
     require('prettier-plugin-verticalize'),
   ],
 }
@@ -66,9 +57,6 @@ module.exports = {
 ```json
 {
   "plugins": [
-    "prettier/plugins/estree",
-    "prettier/plugins/typescript",
-    "prettier/plugins/babel",
     "prettier-plugin-verticalize"
   ]
 }
@@ -98,7 +86,7 @@ module.exports = {
 ```javascript
 // 当 `minGroupSize` 设置为 3 时，少于 3 行，不对齐
 const name = 'rio'
-const age = 18
+const age  = 18
 
 // 当 `minGroupSize` 设置为 3 时，大于等于 3 行，对齐
 const foo       = 1

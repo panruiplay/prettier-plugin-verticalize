@@ -1,18 +1,8 @@
-import * as prettierPluginBabel from 'prettier/plugins/babel'
-import * as prettierPluginEstree from 'prettier/plugins/estree'
-import * as prettierPluginTypescript from 'prettier/plugins/typescript'
 import { expect, it } from 'vitest'
 import prettier from 'prettier'
 import plugin from '../../src'
 import projectPrettierConfig from '../../prettier.config.js'
 import { Options } from '../../src/types'
-
-const plugins = [
-  prettierPluginEstree,
-  prettierPluginTypescript,
-  prettierPluginBabel,
-  plugin,
-]
 
 type FormatCaseOptions = {
   input: string
@@ -43,7 +33,7 @@ export function formatCase({
       useTabs: useTabs ?? projectPrettierConfig.useTabs,
       printWidth,
       parser: 'typescript',
-      plugins,
+      plugins: [...(projectPrettierConfig.plugins || []), plugin],
       filepath: jsx ? 'example.tsx' : 'example.ts',
     })
 
