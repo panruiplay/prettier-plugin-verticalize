@@ -67,16 +67,16 @@ export function createAlignContext(
 ): AlignContext {
   const ast = parse(sourceCode, {
     parser: BabelTsParser,
-    useTabs,
+    useTabs: useTabs,
     ...(useTabs ? { tabWidth: 1 } : null),
   })
   const [parentMap, indexMap, comments] = astTraversal(ast.program)
 
   const context: AlignContext = {
     ast,
-    magicString: new MagicString(sourceCode),
-    tokens: ast.tokens || [],
     comments,
+    tokens: ast.tokens || [],
+    magicString: new MagicString(sourceCode),
     lineWidthOffset: Array(ast.loc.lines.infos.length).fill(0),
     getLine: ({ loc }) => {
       const idx = loc.start.line - 1

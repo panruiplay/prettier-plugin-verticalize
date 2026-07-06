@@ -25,12 +25,7 @@ const estreePrinter: EstreePrinter = {
         __embeddedInHtml: options.__embeddedInHtml,
       })
 
-      return verticalAlign(
-        formatted,
-        options as any as Options,
-        !!options.useTabs,
-        // (options.filepath ?? options.filePath) as string,
-      )
+      return verticalAlign(formatted, options as any as Options, !!options.useTabs)
     }
 
     return doc

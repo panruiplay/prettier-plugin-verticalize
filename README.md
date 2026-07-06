@@ -26,39 +26,27 @@ npm install -D prettier prettier-plugin-verticalize
 
 ## 启用
 
-在 Prettier 配置文件中注册插件。
-
-ESM 写法：
+在 Prettier 配置文件（prettier.config.js、prettier.config.cjs 或 .prettierrc）中注册插件。
 
 ```js
 // prettier.config.js
 import prettierPluginVerticalize from 'prettier-plugin-verticalize'
-
 export default {
-  plugins: [
-    prettierPluginVerticalize
-  ],
+  plugins: [prettierPluginVerticalize],
 }
 ```
-
-CommonJS 写法：
 
 ```js
 // prettier.config.cjs
 module.exports = {
-  plugins: [
-    require('prettier-plugin-verticalize'),
-  ],
+  plugins: [require('prettier-plugin-verticalize')],
 }
 ```
 
-在 `.prettierrc` 中：
-
 ```json
+// .prettierrc
 {
-  "plugins": [
-    "prettier-plugin-verticalize"
-  ]
+  "plugins": ["prettier-plugin-verticalize"]
 }
 ```
 
@@ -86,7 +74,7 @@ module.exports = {
 ```javascript
 // 当 `minGroupSize` 设置为 3 时，少于 3 行，不对齐
 const name = 'rio'
-const age  = 18
+const age = 18
 
 // 当 `minGroupSize` 设置为 3 时，大于等于 3 行，对齐
 const foo       = 1
@@ -98,14 +86,14 @@ const component = 3
 
 ```javascript
 // 当 `maxWidthDiff` 设置为 20 时
-const name        = 1      // name
-const array       = [1, 2] // list
-const array123456 = 3      // name
-const array654321 = [3, 4] // list
+const array      = 1      // name
+const name       = [1, 2] // list
+const name123456 = 3      // name
+const name654321 = [3, 4] // list
 
 // 当 `maxWidthDiff` 设置为 5 时
-const name  = 1      // name
-const array = [1, 2] // list
-const array123456 = 3      // name
-const array654321 = [3, 4] // list
+const array = 1      // name
+const name  = [1, 2] // list
+const name123456 = 3      // name
+const name654321 = [3, 4] // list
 ```
