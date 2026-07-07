@@ -86,14 +86,16 @@ const component = 3
 
 ```javascript
 // 当 `maxWidthDiff` 设置为 20 时
-const array      = 1      // name
-const name       = [1, 2] // list
-const name123456 = 3      // name
-const name654321 = [3, 4] // list
+console.log('1234')       // 注释前长度差距为6
+console.log('1234567890') // 注释前长度差距为6
+
+const number1234       = 1 
+const number1234567890 = 1
 
 // 当 `maxWidthDiff` 设置为 5 时
-const array = 1      // name
-const name  = [1, 2] // list
-const name123456 = 3      // name
-const name654321 = [3, 4] // list
+console.log('1234') // 注释前长度差距为6
+console.log('1234567890') // 注释前长度差距为6
+
+const number1234 = 1
+const number1234567890 = 1
 ```
