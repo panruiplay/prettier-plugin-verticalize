@@ -21,8 +21,20 @@ index 6f1d6df..6f65246 100644
 +    }
 +  }
 +};
+diff --git a/node_modules/recast/lib/parser.js b/node_modules/recast/lib/parser.js
+index df257f8..3ff7700 100644
+--- a/node_modules/recast/lib/parser.js
++++ b/node_modules/recast/lib/parser.js
+@@ -16,6 +16,7 @@ function parse(source, options) {
+     var lines = (0, lines_1.fromString)(source, options);
+     var sourceWithoutTabs = lines.toString({
+         tabWidth: options.tabWidth,
++        lineTerminator: options.lineTerminator,
+         reuseWhitespace: false,
+         useTabs: false,
+     });
 diff --git a/node_modules/recast/main.d.ts b/node_modules/recast/main.d.ts
-index ae89c3b..b3540b6 100644
+index ae89c3b..bb04cd0 100644
 --- a/node_modules/recast/main.d.ts
 +++ b/node_modules/recast/main.d.ts
 @@ -1,5 +1,5 @@
@@ -35,7 +47,7 @@ index ae89c3b..b3540b6 100644
 @@ -7,6 +7,7 @@ export {
   * arbitrary modification and reprinting.
   */
- parse,
+ parse, 
 +LineInfo,
  /**
   * Convenient shorthand for the ast-types package.

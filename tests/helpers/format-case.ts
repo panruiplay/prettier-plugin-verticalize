@@ -13,6 +13,7 @@ type FormatCaseOptions = {
   printWidth?: number
   jsx?: boolean
   skip?: boolean
+  endOfLine?: 'lf' | 'cr' | 'crlf'
 }
 
 export function formatCase({
@@ -23,13 +24,16 @@ export function formatCase({
   options,
   skip,
   useTabs,
+  endOfLine = 'lf',
   printWidth = projectPrettierConfig.printWidth,
 }: FormatCaseOptions): void {
   const run = skip ? it.skip : it
+
   run(name, async () => {
     const formatted = await prettier.format(input, {
       ...projectPrettierConfig,
       ...options,
+      endOfLine,
       useTabs: useTabs ?? projectPrettierConfig.useTabs,
       printWidth,
       parser: 'typescript',

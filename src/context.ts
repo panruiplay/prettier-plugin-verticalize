@@ -68,6 +68,7 @@ export function createAlignContext(
   const ast = parse(sourceCode, {
     parser: BabelTsParser,
     useTabs: useTabs,
+    lineTerminator: '\n',
     ...(useTabs ? { tabWidth: 1 } : null),
   })
   const [parentMap, indexMap, comments] = astTraversal(ast.program)

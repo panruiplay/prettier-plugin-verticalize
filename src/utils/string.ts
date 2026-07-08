@@ -22,14 +22,6 @@ export function getStringWidth(str: string): number {
     if (codePoint >= 0xd7b0 && codePoint <= 0xd7ff) return true
     if (codePoint >= 0x3040 && codePoint <= 0x309f) return true
     if (codePoint >= 0x30a0 && codePoint <= 0x30ff) return true
-    if (codePoint >= 0x31f0 && codePoint <= 0x31ff) return true
-    if (codePoint >= 0x3000 && codePoint <= 0x303f) return true
-    if (codePoint >= 0x1f300 && codePoint <= 0x1f9ff) return true
-    if (codePoint >= 0x1f600 && codePoint <= 0x1f64f) return true
-    if (codePoint >= 0x2600 && codePoint <= 0x26ff) return true
-    if (codePoint >= 0x2700 && codePoint <= 0x27bf) return true
-    if (codePoint >= 0x20a0 && codePoint <= 0x20cf) return false
-    if (codePoint >= 0x2190 && codePoint <= 0x21ff) return false
     return false
   }
 
@@ -41,6 +33,24 @@ export function getStringWidth(str: string): number {
   }
   return length
 }
+
+/**
+ * 检测字符串中的换行符类型
+ */
+// export function detectLineEnding(str: string) {
+//   if (typeof str !== 'string') return 'none'
+//
+//   const purl    = str.replace(/\r\n/g, '')
+//   const pureLF  = purl.includes('\n')
+//   const pureCR  = purl.includes('\r')
+//   const hasCRLF = str.includes('\r\n')
+//
+//   const length = ([hasCRLF, pureLF, pureCR] as const).filter((v) => v).length
+//
+//   if (length === 0) return 'none'
+//   if (length > 1) return 'mixed'
+//   return hasCRLF ? 'crlf' : pureCR ? 'cr' : 'lf'
+// }
 
 export function spaces(number: number) {
   return ' '.repeat(number)

@@ -17,6 +17,7 @@ const estreePrinter: EstreePrinter = {
     const doc = basePrint(path, options, print)
 
     if (path.isRoot && (path.node.type === 'Program' || path.node.type === 'File')) {
+      // docPrinter之后，换行符是 LF(\n)
       const { formatted } = docPrinter.printDocToString(doc, {
         printWidth: options.printWidth,
         tabWidth: options.tabWidth,
@@ -25,6 +26,7 @@ const estreePrinter: EstreePrinter = {
         __embeddedInHtml: options.__embeddedInHtml,
       })
 
+      // 返回字符串之后，prettier 会把字符串换行符替换成 options.endOfLine
       return verticalAlign(formatted, options as any as Options, !!options.useTabs)
     }
 

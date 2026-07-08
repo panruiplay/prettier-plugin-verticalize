@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-verticalize",
-  "version": "1.0.5",
+  "version": "1.0.6-alpha.0",
   "description": "a Prettier plugin for vertically aligning your code.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,6 +31,11 @@
     "prepublishOnly": "npm run build",
     "prepare": "husky && patch-package"
   },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
   "keywords": [
     "prettier",
     "prettier-plugin",
@@ -55,8 +60,9 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
     "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "patch-package": "^8.0.1",
-    "prettier": "^3.5.3",
+    "prettier": "^3.9.4",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
