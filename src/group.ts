@@ -26,6 +26,7 @@ import {
   isAdjacentRow,
   isSpanLessThen,
   isAlignAssignment,
+  isExportDeclaration,
 } from './utils/ast-guard'
 import { groupBy } from './utils/group'
 import { getStringWidth } from './utils/string'
@@ -125,10 +126,12 @@ export function createCodeGroup(ctx: AlignContext) {
     declarations,
     (prev, cur, { meta }) => {
       return (
+        // 都是 export 或者都不是
+        isExportDeclaration(prev.item, ctx) === isExportDeclaration(cur.item, ctx) &&
         // 相同缩进
-        isSameIndent(prev.item, cur.item, ctx) &&
+        isSameIndent(prev.item.declarations[0], cur.item.declarations[0], ctx) &&
         // 是连续的行
-        isAdjacentRow(prev.item, cur.item) &&
+        isAdjacentRow(prev.item.declarations[0], cur.item.declarations[0]) &&
         // 控制组内变量名称最大宽度和最小行宽度差距
         Math.abs(meta.minLeftWidth - cur.info.leftWidth) <= vdMaxWidthDiff &&
         Math.abs(meta.maxLeftWidth - cur.info.leftWidth) <= vdMaxWidthDiff
@@ -138,7 +141,7 @@ export function createCodeGroup(ctx: AlignContext) {
       minGroupSize: vdMinGroupSize,
       initGroup: () => ({ minLeftWidth: Infinity, maxLeftWidth: -Infinity }),
       initItemInfo: (item) => {
-        const lineText = ctx.getLineText(item)
+        const lineText = ctx.getLineText(item.declarations[0])
         const leftWidth = getStringWidth(
           lineText.slice(0, item.declarations[0].id.loc.end.column),
         )

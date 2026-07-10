@@ -27,7 +27,7 @@ function applyCodeAlignment(context: AlignContext) {
 
   for (const { list, meta } of singleDeclarationGroups) {
     for (const declaration of list) {
-      const lineIdx     = declaration.item.loc.start.line - 1
+      const lineIdx     = context.getLine(declaration.item.declarations[0]).idx
       const leftWidth   = declaration.info.leftWidth
       const appendWidth = meta.maxLeftWidth - leftWidth
 

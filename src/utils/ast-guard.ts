@@ -34,6 +34,10 @@ export function isSameIndent(
   return context.getLine(nodeA).indent === context.getLine(nodeB).indent
 }
 
+export function isExportDeclaration(node: VariableDeclaration, ctx: AlignContext) {
+  return ctx.getParent(node)?.type === 'ExportNamedDeclaration'
+}
+
 export function isTrailingLineComment(comment: Comment, ctx: AlignContext) {
   // 必须是单行注释
   if (!isSingleLine(comment.loc)) return false
@@ -57,8 +61,18 @@ export function isAlignEnum(node: Node) {
 }
 
 export function isAlignVariableDeclaration(node: VariableDeclaration, ctx: AlignContext) {
-  if (!inNormalBlock(node, ctx)) return false
-  if (!isSingleLine(node.loc)) return false
+  const parent = ctx.getParent(node)
+
+  if (parent?.type === 'ExportNamedDeclaration' && !parent.specifiers.length) {
+    // export const a = 1
+    if (!inNormalBlock(parent, ctx)) return false
+    if (!isSingleLine(parent.loc)) return false
+  } else {
+    // const a = 1
+    if (!inNormalBlock(node, ctx)) return false
+    if (!isSingleLine(node.loc)) return false
+  }
+
   if (node.declarations.length !== 1) return false
   if (!node.declarations[0].init) return false
   return true
